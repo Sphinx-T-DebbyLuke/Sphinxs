@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd ">
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd ">
+	<context:component-scan base-package="com.xj.Controller"></context:component-scan>
+	<context:component-scan base-package="com.xj.POJO"></context:component-scan>
+	<context:component-scan base-package="com.xj.Service"></context:component-scan>
+	
 	<bean id="testDIDaoImpl" class="com.xj.dao.Impl.TestDIDaoImpl"></bean>
 	<bean id="testDIServiceImpl" class="com.xj.Service.Impl.TestDIServiceImpl">
 		<!-- 构造注入 -->
@@ -9,4 +13,41 @@
 		<!-- setter注入 -->
 		<property name="testDIDao" ref="testDIDaoImpl"></property>
 	</bean>
+	
+	<!-- DAO -->
+	<context:property-placeholder location="classpath:db.properties"/>
+	<bean name="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="jdbcUrl" value="${mysql.url}"></property>
+		<property name="driverClass" value="${mysql.driver}"></property>
+		<property name="user" value="${mysql.username}"></property>
+		<property name="password" value="${mysql.password}"></property>
+	
+		<!-- c3p0连接池的私有属性 -->
+		<property name="maxPoolSize" value="30"></property>
+		<property name="minPoolSize" value="10"></property>
+		<!-- 关闭连接手不自动提交 -->
+		<property name="autoCommitOnClose" value="false"></property>
+		<property name="checkoutTimeout" value="10000"></property>
+		<!-- 连接失败重试次数 -->
+		<property name="acquireRetryAttempts" value="2"></property>
+	</bean>
+	
+	<!-- sqlSessionFactoryBean -->
+	<bean name="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+		<property name="dataSource" ref="datasource"></property>
+		<!-- 扫描mapper -->
+		<property name="mapperLocations" value="com/xj/Mapper/*.xml"></property>
+	</bean>
+	<!-- 动态实现Dao接口 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean"></property>
+		<!-- 扫描Dao接口包 -->
+		<property name="basePackage" value="com.xj.dao"></property>
+	</bean>
+	
+	<bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="datasource"></property>
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>
