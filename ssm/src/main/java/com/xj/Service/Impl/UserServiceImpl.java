@@ -38,4 +38,9 @@ public class UserServiceImpl implements UserService {
 		return userDao.deleteUserById(uid);
 	}
 
+	@Override
+	public User UserLogin(User user) {
+		return userDao.UserLogin(user);
+	}
+
 }

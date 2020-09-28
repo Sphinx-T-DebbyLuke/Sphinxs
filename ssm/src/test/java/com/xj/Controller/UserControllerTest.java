@@ -8,7 +8,7 @@ public class UserControllerTest {
 	@Test
 	public void test(){
 		ApplicationContext appCon=new ClassPathXmlApplicationContext("applicationContext.xml");
-				UserController uc=(UserController)appCon.getBean ("userController") ;
-				uc.test();
+				//UserController uc=(UserController)appCon.getBean ("userController") ;
+				//uc.test();
 	}
 }

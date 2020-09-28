@@ -3,6 +3,7 @@ package com.xj.POJO;
 public class User {
 	private Integer uid;
 	private String uname;
+	private String upasswd;
 	private String usex;
 	public Integer getUid() {
 		return uid;
@@ -22,9 +23,15 @@ public class User {
 	public void setUsex(String usex) {
 		this.usex = usex;
 	}
+	public String getUpasswd() {
+		return upasswd;
+	}
+	public void setUpasswd(String upasswd) {
+		this.upasswd = upasswd;
+	}
 	@Override
 	public String toString() {
-		return "User [uid=" + uid + ", uname=" + uname + ", usex=" + usex + "]";
+		return "User [uid=" + uid + ", uname=" + uname + ", upasswd=" + upasswd + ", usex=" + usex + "]";
 	}
 	
 }
