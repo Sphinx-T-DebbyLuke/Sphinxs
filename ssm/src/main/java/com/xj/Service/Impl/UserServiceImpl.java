@@ -14,33 +14,16 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
 	@Override
-	public User selectUserById(Integer uid) {
-		return userDao.selectUserById(uid);
+	public User UserLogin(User user) {
+		return userDao.UserLogin(user);
 	}
-
 	@Override
 	public List<User> selectAllUser() {
 		return userDao.selectAllUser();
 	}
-
 	@Override
-	public Integer addUser(User user) {
-		return userDao.addUser(user);
-	}
-
-	@Override
-	public Integer updateUser(User user) {
-		return userDao.updateUser(user);
-	}
-
-	@Override
-	public Integer deleteUserById(Integer uid) {
-		return userDao.deleteUserById(uid);
-	}
-
-	@Override
-	public User UserLogin(User user) {
-		return userDao.UserLogin(user);
+	public void addUser(User user) {
+		userDao.addUser(user);;
 	}
 
 }

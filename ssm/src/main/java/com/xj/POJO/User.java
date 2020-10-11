@@ -5,6 +5,9 @@ public class User {
 	private String uname;
 	private String upasswd;
 	private String usex;
+	private Integer uage;
+	private String card;
+	private Integer phone;
 	public Integer getUid() {
 		return uid;
 	}
@@ -29,9 +32,28 @@ public class User {
 	public void setUpasswd(String upasswd) {
 		this.upasswd = upasswd;
 	}
+	public Integer getUage() {
+		return uage;
+	}
+	public void setUage(Integer uage) {
+		this.uage = uage;
+	}
+	public String getCard() {
+		return card;
+	}
+	public void setCard(String card) {
+		this.card = card;
+	}
+	public Integer getPhone() {
+		return phone;
+	}
+	public void setPhone(Integer phone) {
+		this.phone = phone;
+	}
 	@Override
 	public String toString() {
-		return "User [uid=" + uid + ", uname=" + uname + ", upasswd=" + upasswd + ", usex=" + usex + "]";
+		return "User [uid=" + uid + ", uname=" + uname + ", upasswd=" + upasswd + ", usex=" + usex + ", uage=" + uage
+				+ ", card=" + card + ", phone=" + phone + "]";
 	}
 	
 }

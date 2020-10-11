@@ -1,8 +1,11 @@
 package com.xj.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -26,5 +29,16 @@ public class UserController {
 			uull="error";
 		}
 		return uull;
+	}
+	@RequestMapping(value="/showUser.action")
+	public String showUser(Model model){
+		List<User> allUser = userService.selectAllUser();
+		model.addAttribute("allUser", allUser);
+		return "showUser";
+	}
+	@RequestMapping(value="/newUser.action")
+	public String newUser(@ModelAttribute("user") User user){
+		userService.addUser(user);
+		return "showUser";
 	}
 }
