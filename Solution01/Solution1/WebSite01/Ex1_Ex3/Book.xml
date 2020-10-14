@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Books>
+  <Book ID="1001">
+    <BookName>WEB程序设计</BookName>
+    <Author>沈士根</Author>
+    <Price>49</Price>
+  </Book>
+  <Book ID="1002">
+    <BookName>ASP.NET高级编程</BookName>
+    <Author>张立</Author>
+    <Price>55</Price>
+  </Book>
+  <Book ID="1003">
+    <BookName>C#程序设计</BookName>
+    <Author>叶晓彤；杨勇</Author>
+    <Price>66</Price>
+  </Book>
+  <Book ID="1004">
+    <BookName>python程序设计</BookName>
+    <Author>王小明</Author>
+    <Price>59</Price>
+  </Book>
+</Books>
