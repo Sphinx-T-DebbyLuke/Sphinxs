@@ -1,0 +1,27 @@
+﻿.leftDiv{
+    width:20%;
+    float:left;
+}
+.rightDiv{
+    width:80%;
+    float:right;
+}
+.tocenter{
+    text-align:center;
+}
+.tobottom{
+    position:fixed;
+    bottom:0;
+    width:100%;
+}
+th{
+    background-color:#126ddd;
+}
+td{
+    background-color:#1c1ad4;
+    margin:5px;
+}
+.tablecellspacing{    
+    height: 68px;
+    width: 310px;
+}
