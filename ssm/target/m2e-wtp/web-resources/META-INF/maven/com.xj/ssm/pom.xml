@@ -13,7 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <struts.version>2.3.24.1</struts.version>
         <struts.javassist.version>3.12.1.GA</struts.javassist.version>
-        <spring.version>4.3.28.RELEASE</spring.version>
+        <spring.version>4.3.7.RELEASE</spring.version>
         <mybatis.version>3.5.3</mybatis.version>
         <mapper.version>4.0.3</mapper.version>
         <pagehelper.version>5.1.11</pagehelper.version>
@@ -188,8 +188,11 @@
             <scope>provided</scope>
         </dependency>
         <!-- c3p0数据库连接池 -->
-        <!-- <dependency> <groupId>c3p0</groupId> <artifactId>c3p0</artifactId>
-            <version>0.9.1.2</version> </dependency> -->
+        <dependency>
+		    <groupId>com.mchange</groupId>
+		    <artifactId>c3p0</artifactId>
+		    <version>0.9.5.2</version>
+		</dependency>
         <!-- dbcp数据库连接池 -->
         <dependency>
             <groupId>commons-dbcp</groupId>
