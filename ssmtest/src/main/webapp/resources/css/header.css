@@ -1,0 +1,70 @@
+.header {
+	width: 800px;
+	height: 80px;
+	margin: 20px auto 0px auto; /*水平居中*/
+	/*border:1px red solid;*/
+	background-color: #CC6;
+}
+
+.row1 {
+	width: 800px;
+	height: 50px;
+	overflow: hidden;
+}
+
+.row11 {
+	/*border:1px red solid;*/
+	width: 200px;
+	heigth: 50px;
+	text-align: center; /*左右居中*/
+	line-height: 50px; /*行高*/
+	float: left;
+	overflow: hidden;
+}
+
+.row12 {
+	width: 450px;
+	heigth: 50px;
+	font-size: 27px;
+	line-height: 50px;
+	font-family: "方正舒体";
+	text-align: center; /*左右居中*/
+	filter: shadow(dirction = 45, color = yellow);
+	float: left;
+	overflow: hidden;
+}
+
+.row13 {
+	/*border:1px red solid;*/
+	width: 150px;
+	heigth: 50px;
+	text-align: center; /*左右居中*/
+	line-height: 50px; /*行高*/
+	float: left;
+	overflow: hidden;
+}
+
+.row2 { /*菜单*/
+	width: 800px;
+	height: 30px;
+	overflow: hidden;
+	line-height: 30px;
+	padding-left: 150px;
+}
+
+.row2 ul li { /*使用空格建立的上下文样式*/
+	list-style: none; /*取消项目符号*/
+	width: 120px;
+	float: left; /*并排列表项*/
+}
+
+.row2 ul li a {
+	font-size: 20px;
+	color: #666666; /*浅灰色*/
+	text-decoration: none;
+}
+
+.row2 ul li a:hover {
+	color: #FF0000; /*红色*/
+	text-decoration: underline;
+}

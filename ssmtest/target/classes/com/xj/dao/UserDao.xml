@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.UserDao">
+	<resultMap type="person" id="personMap">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="age" column="age"/>
+		<association property="idcarder" javaType="idcard">
+			<id property="id" column="idcard_id"/>
+			<result property="code" column="code"/>
+		</association>
+	</resultMap>
+
+	<select id="UserLogin" parameterType="User" resultType="User">
+		SELECT * FROM myuser WHERE uname=#{uname} AND upasswd=#{upasswd}
+	</select>
+	<select id="selectAllUser" resultType="User">
+		SELECT uid,uname,usex,upasswd,uage,card,phone FROM myuser
+	</select>
+	<insert id="addUser" parameterType="User">
+		INSERT INTO myuser(uname,usex,uage,card,phone) VALUES(#{uname},#{usex},#{uage},#{card},#{phone})
+	</insert>
+	<delete id="deleteUser" parameterType="Integer">
+		DELETE FROM myuser WHERE uid=#{id}
+	</delete>
+	<select id="selectUserById" parameterType="Integer" resultType="User">
+		SELECT * FROM myuser WHERE uid=#{id}
+	</select>
+	<update id="UpdateUser" parameterType="User">
+		UPDATE myuser 
+		<set>
+			<if test="uname !=null and uname !=''">
+				uname=#{uname},
+			</if>
+			<if test="usex !=null and usex !=''">
+				usex=#{usex},
+			</if>
+			<if test="uage !=null and uage !=''">
+				uage=#{uage},
+			</if>
+			<if test="card !=null and card !=''">
+				card=#{card},
+			</if>
+			<if test="phone !=null and phone !=''">
+				phone=#{phone},
+			</if>
+		</set>
+		WHERE uid=#{uid}
+	</update>
+	
+</mapper>
